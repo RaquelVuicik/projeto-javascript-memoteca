@@ -49,6 +49,18 @@ const api = {
             alert('Erro ao aditar pensamento')
             throw error
         }
+    },
+
+    async excluirPensamento(id) { //requisição para excluir pensamento específico;
+        try {
+            const response = await fetch(`http://localhost:3000/pensamentos/${id}`, {
+                method: "DELETE",
+            })
+        } 
+        catch {
+            alert('Erro ao excluir um pensamento')
+            throw error
+        }
     }
 }
 
