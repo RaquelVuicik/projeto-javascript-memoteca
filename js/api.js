@@ -1,5 +1,5 @@
 const api = {
-    async buscarPensamentos() {
+    async buscarPensamentos() { //requisição para buscar lista de pensamentos
         try {
             const response = await fetch('http://localhost:3000/pensamentos')
             return await response.json()
@@ -9,7 +9,7 @@ const api = {
         }
     },
 
-    async salvarPensamento(pensamento) {
+    async salvarPensamento(pensamento) { //requisição para salvar pensamento
         try {
             const response = await fetch('http://localhost:3000/pensamentos', {
                 method: "POST",
@@ -25,7 +25,7 @@ const api = {
         }
     },
 
-    async buscarPensamentoPorId(id) {
+    async buscarPensamentoPorId(id) { //requisição para buscar pensamento específico;
         try {
             const response = await fetch(`http://localhost:3000/pensamentos/${id}`)
             return await response.json()
@@ -35,7 +35,7 @@ const api = {
         }
     },
 
-    async editarPensamento(pensamento) {
+    async editarPensamento(pensamento) { //requisição para editar pensamento específico;
         try {
             const response = await fetch(`http://localhost:3000/pensamentos/${pensamento.id}`, {
                 method: "PUT",
