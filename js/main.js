@@ -11,10 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     botaoCancelar.addEventListener("click", manipularCancelamento)
 })
 
-function manipularCancelamento() {
-    ui.limparFormulario();
-}
-
 async function manipularSubmissaoFormulario(event) {
     event.preventDefault();
     const id = document.getElementById("pensamento-id").value
@@ -28,11 +24,12 @@ async function manipularSubmissaoFormulario(event) {
             await api.salvarPensamento({ conteudo, autoria })
         }
         ui.renderizarPensamentos()
-
     } 
     catch {
         alert("Erro ao salvar pensamento")
     }
-
 }
 
+function manipularCancelamento() {
+    ui.limparFormulario();
+}
