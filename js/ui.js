@@ -13,30 +13,25 @@ const ui = {
         document.getElementById("pensamento-form").reset()
     },
     
-    async renderizarPensamentos() {
+    async renderizarPensamentos(pensamentosFiltrados = null) {
         const listaPensamentos = document.getElementById("lista-pensamentos")
         const mensagemVazia = document.getElementById("mensagem-vazia")
         listaPensamentos.innerHTML = ""
 
         try {
-            const pensamentos = await api.buscarPensamentos()
-            pensamentos.forEach(ui.adicionarPensamentoNaLista) /* (pensamento => {
-                
-                listaPensamentos.innerHTML += `
-                    <li class="li-pensamento" data-id="${pensamento.id}">
-                    <img src="assets/imagens/aspas-azuis.png" alt="Aspas azuis" class="icone-aspas">
-                    <div class="pensamento-conteudo">${pensamento.conteudo}</div>
-                    <div class="pensamento-autoria">${pensamento.autoria}</div>
-                    </li>
-                `
-                
-            }) */
+            let pensamentosParaRenderizar
 
-           if(pensamentos.length === 0) {
+            if(pensamentosFiltrados) {
+                pensamentosParaRenderizar = pensamentosFiltrados
+            } else {
+                pensamentosParaRenderizar = await api.buscarPensamentos()
+            }
+
+           if(pensamentosParaRenderizar.length === 0) {
             mensagemVazia.style.display = "block";
            } else {
             mensagemVazia.style.display = "none";
-            pensamentos.forEach(ui.adicionarPensamentoNaLista)
+            pensamentosParaRenderizar.forEach(ui.adicionarPensamentoNaLista)
            }
         } catch {
             alert("Erro ao buscar pensamentos")
