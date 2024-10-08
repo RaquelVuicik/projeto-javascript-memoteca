@@ -109,6 +109,12 @@
       "conteudo": "Testando formato de data",
       "autoria": "Dev",
       "data": "2024-10-07"
+    },
+    {
+      "id": "28e3",
+      "conteudo": "Novo teste de pensamento",
+      "autoria": "Dev",
+      "data": "2024-11-08T00:00:00.000Z"
     }
   ]
 }
