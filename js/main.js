@@ -37,7 +37,8 @@ async function manipularSubmissaoFormulario(event) {
     }
 
     if(!validarAutoria(autoria)) {
-        alert("Autoria: É permitida a inclusão apenas de letras com no mínimo 3 e no máximo 15 caracteres")
+        alert("Autoria: É permitida a inclusão de letras e entre 3 e 15 caracteres sem espaços")
+        return
     }
 
     if(!validarData(data)) {
