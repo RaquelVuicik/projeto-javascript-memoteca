@@ -1,6 +1,17 @@
 import ui from "./ui.js"
 import api from "./api.js"
 
+const regexConteudo = /^[A-Za-z\s]{10,}$/
+const regexAutoria = /^[A-Za-z]{3,15}$/
+
+function validarConteudo(conteudo) {
+    return regexConteudo.test(conteudo)
+}
+
+function validarAutoria(autoria) {
+    return regexAutoria.test(autoria)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     ui.renderizarPensamentos()
 
@@ -20,8 +31,17 @@ async function manipularSubmissaoFormulario(event) {
     const autoria = document.getElementById("pensamento-autoria").value
     const data = document.getElementById("pensamento-data").value
 
+    if(!validarConteudo(conteudo)) {
+        alert("Conteúdo do Pensamento: É permitida a inclusão apenas de letras e espaços com no mínimo 10 caracteres")
+        return
+    }
+
+    if(!validarAutoria(autoria)) {
+        alert("Autoria: É permitida a inclusão apenas de letras com no mínimo 3 e no máximo 15 caracteres")
+    }
+
     if(!validarData(data)) {
-        alert("Não é permitido o cadastro de datas futuras. Selecione outra data.")
+        alert("Data: Não é permitido o cadastro de datas futuras. Selecione outra data.")
     }
 
     try {
