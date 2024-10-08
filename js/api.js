@@ -3,14 +3,21 @@ const URL_BASE = "http://localhost:3000"
 const converterStringParaData = (dataString) => {
     const [ano, mes, dia] = dataString.split("-")
     //2024-08-12 = [2024, 8, 12]
-    return new Date(Date.UTC(ano, mes, dia))
+    return new Date(Date.UTC(ano, mes - 1, dia))
 }
 
 const api = {
     async buscarPensamentos() { //requisição para buscar lista de pensamentos
         try {
             const response = await axios.get(`${URL_BASE}/pensamentos`)
-            return await response.data
+            const pensamentos = await response.data
+
+            return pensamentos.map(pensamento => {
+                return {
+                    ...pensamento,
+                    data: new Date(pensamento.data)
+                }
+            })
         } 
         catch {
             alert('Erro ao buscar pensamentos!')
@@ -36,7 +43,12 @@ const api = {
     async buscarPensamentoPorId(id) { //requisição para buscar pensamento específico;
         try {
             const response = await axios.get(`${URL_BASE}/pensamentos/${id}`)
-            return await response.data
+            const pensamento = await response.data
+
+            return {
+                ...pensamento,
+                data: new Date(pensamento.data)
+            }
         } 
         catch {
             alert('Erro ao buscar pensamento')
