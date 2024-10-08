@@ -1,6 +1,10 @@
 import ui from "./ui.js"
 import api from "./api.js"
 
+function removerEspacos(string) {
+    return string.replaceAll(/\s+/g, '')
+}
+
 const regexConteudo = /^[A-Za-z\s]{10,}$/
 const regexAutoria = /^[A-Za-z]{3,15}$/
 
@@ -31,12 +35,15 @@ async function manipularSubmissaoFormulario(event) {
     const autoria = document.getElementById("pensamento-autoria").value
     const data = document.getElementById("pensamento-data").value
 
-    if(!validarConteudo(conteudo)) {
+    const conteudoSemEspaco = removerEspacos(conteudo)
+    const autoriaSemEspaco = removerEspacos(autoria)
+
+    if(!validarConteudo(conteudoSemEspaco)) {
         alert("Conteúdo do Pensamento: É permitida a inclusão apenas de letras e espaços com no mínimo 10 caracteres")
         return
     }
 
-    if(!validarAutoria(autoria)) {
+    if(!validarAutoria(autoriaSemEspaco)) {
         alert("Autoria: É permitida a inclusão de letras e entre 3 e 15 caracteres sem espaços")
         return
     }
