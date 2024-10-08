@@ -84,9 +84,17 @@ const ui = {
 
         const botaoFavorito = document.createElement("button")
         botaoFavorito.classList.add("botao-favorito")
+        botaoFavorito.onclick = async () => {
+            try {
+                await api.atualizarFavorito(pensamento.id, !pensamento.favorito)
+                ui.renderizarPensamentos()
+            } catch (error) {
+                alert("Erro ao atualizar pensamento")
+            }
+        }
 
         const iconeFavorito = document.createElement("img")
-        iconeFavorito.src = "assets/imagens/icone-favorito_outline.png"
+        iconeFavorito.src = pensamento.favorito ? "assets/imagens/icone-favorito.png" : "assets/imagens/icone-favorito_outline.png"
         iconeFavorito.alt = "Ícone de favorito"
         botaoFavorito.appendChild(iconeFavorito)
 
