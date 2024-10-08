@@ -16,10 +16,9 @@
     },
     {
       "id": "5b8a",
-      "favorito": false,
       "conteudo": "Na minha máquina funciona!",
       "autoria": "Dev",
-      "data": "2024-10-08T18:30:00.789Z"
+      "data": "2024-10-07"
     },
     {
       "id": "68uy",
@@ -108,7 +107,7 @@
       "id": "a416",
       "conteudo": "Testando formato de data",
       "autoria": "Dev",
-      "data": "2024-10-07"
+      "data": "2024-11-08T18:30:00.000Z"
     },
     {
       "id": "28e3",
@@ -138,7 +137,7 @@
       "id": "4444",
       "conteudo": "teste do teste",
       "autoria": "Dev",
-      "data": "2024-10-08T00:00:00.000Z"
+      "data": "2024-10-08T18:30:00.000Z"
     }
   ]
 }
